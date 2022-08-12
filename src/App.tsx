@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { useAppSelector } from './app/hooks'
+import DisplayResultScreen from './components/DisplayResultScreen'
+import Keypads from './components/Keypads'
+import TopHead from './components/TopHead'
 
 function App() {
+  // const dispatch = useAppDispatch()
+  const { themeMode } = useAppSelector((state) => state.theme)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={`flex items-center flex-col h-screen bg-[#3a4764] p-10 ${
+        themeMode === 'themeMode2' ? 'bg-[#e6e6e6]' : ''
+      } ${themeMode === 'themeMode3' ? 'bg-[#160628]' : ''}`}
+    >
+      <TopHead />
+      <DisplayResultScreen />
+      <Keypads />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
